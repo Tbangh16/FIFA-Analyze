@@ -26,11 +26,8 @@ This project uses Python to analyze the dataset of FIFA 22 players. The goal of 
    - **`nltk`**: Offers tools for analyzing and processing text, particularly useful for handling descriptive or textual data.
 
   
-## Source
+## Prepare Data for Exploration
 The <a href="https://github.com/Tbangh16/FIFA-Analyze/blob/master/players_22.csv">dataset</a> players_22.csv includes over 100 columns with detailed information on player attributes, positions, clubs, and countries.
-# Dữ liệu Cầu Thủ FIFA 19
-
-Trong notebook này, chúng ta sẽ nhập và xem trước dữ liệu cầu thủ từ file CSV `data.csv`.
 
 <details>
 <summary>Click to show code</summary>
@@ -41,19 +38,19 @@ df <- read.csv("players_22.csv", encoding = "UTF-8")[-1]
 head(df)
 ```
 ```r
-# Hiển thị thông tin chung về DataFrame 
-print("Thông tin chung về DataFrame:") 
+# Display general information about the DataFrame
+print("General information about the DataFrame:") 
 print(df.info()) 
-# Hiển thị thống kê mô tả 
-print("\nThống kê mô tả:") 
+# Display descriptive statistics
+print("\nDescriptive Statistics:") 
 print(df.describe()) 
-# Hiển thị những dòng đầu tiên của DataFrame 
-print("\nNhững dòng đầu tiên của DataFrame:") 
+# Display the first few rows of the DataFrame
+print("\nFirst few rows of the DataFrame:") 
 print(df.head())
+
 ```
 </details>
 
-## Prepare Data for Exploration
 
 ## Process Data from Dirty to Clean
 
@@ -61,7 +58,7 @@ print(df.head())
 <summary>Click to show code</summary> 
   
 ```r
-# Biểu đồ tỉ lệ giá trị thiếu
+# Plot missing values ratio
 missing = df.isnull().mean() * 100
 missing = missing[missing > 0].sort_values()
 plt.figure(figsize=(10, 6))
@@ -72,7 +69,7 @@ plt.xlabel('Columns', fontsize=12, color='darkred')
 plt.ylabel('Percentage', fontsize=12, color='darkred')
 plt.show()
 
-# Biểu đồ số lượng mỗi kiểu dữ liệu
+# Plot count of each data type
 plt.figure(figsize=(10, 6))
 colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', 'pink', 'yellow']
 df.dtypes.value_counts().plot(kind='bar', color=colors)
@@ -81,7 +78,7 @@ plt.xlabel('Data Types', fontsize=12, color='darkorange')
 plt.ylabel('Count', fontsize=12, color='darkorange')
 plt.show()
 
-# Biểu đồ số lượng các giá trị duy nhất trong mỗi cột
+# Plot count of unique values in each column
 plt.figure(figsize=(14, 10))
 colors = plt.cm.Blues(np.linspace(0.3, 1, len(df.nunique())))
 df.nunique().sort_values(ascending=False).plot(kind='bar', color=colors)
@@ -321,6 +318,9 @@ plt.show()
 
 </details>
 
+![Player Skills](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%203%20Teams%20with%20Highest%20Value%20in%20Each%20League.png "Top 3 Teams with Highest Value in Each League")
+
+
 ### Top 3 Teams with Highest Value in Each League
 <details>
 <summary>Click to show code</summary>
@@ -356,40 +356,9 @@ plt.show()
 
 </details>
 
-### Top 3 Teams with Highest Value in Each League
-<details>
-<summary>Click to show code</summary>
-
-```r
-# Set the size and style of the plot
-plt.figure(figsize=(14, 8))
-sns.set(style="whitegrid")
-
-# Plot the top 3 teams with the highest value in each league
-bar_plot = sns.barplot(
-    x='value_eur', 
-    y='club_name', 
-    hue='league_name', 
-    data=top_teams.sort_values('value_eur', ascending=False), 
-    palette='viridis'
-)
-
-# Set the plot parameters
-bar_plot.set_xlabel('Market Values (in €)', fontsize=12)
-bar_plot.set_ylabel('Teams', fontsize=12)
-bar_plot.set_title('Top 3 Teams with Highest Value in Each League', fontsize=16, weight='bold')
-bar_plot.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, loc: "{:,.0f} €".format(x)))
-
-plt.legend(title='Leagues', bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
-plt.show()
+![Player Skills](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%203%20Teams%20with%20Highest%20Value%20in%20Each%20League.png "Top 3 Teams with Highest Value in Each League")
 
 
-
-
-```
-
-</details>
 ### Top 30 Most Expensive Football Players in the World
 <details>
 <summary>Click to show code</summary>
@@ -430,6 +399,8 @@ plt.show()
 
 </details>
 
+![Top 30 Most Expensive Football Players in the World](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2030%20Most%20Expensive%20Football%20Players%20in%20the%20World.png "Top 30 Most Expensive Football Players in the World")
+
 ### Top 30 Most Expensive Football Players in the World
 <details>
 <summary>Click to show code</summary>
@@ -469,6 +440,9 @@ plt.show()
 ```
 
 </details>
+
+![Top 30 Most Expensive Football Players in the World](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2030%20Most%20Expensive%20Football%20Players%20in%20the%20World.png "Top 30 Most Expensive Football Players in the World")
+
 
 ### Top 20 players with the highest Skill
 <details>
@@ -500,6 +474,7 @@ plt.show()
 
 </details>
 
+![Top 20 players with the highest Skill](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2020%20players%20with%20the%20highest%20Skill.png "Top 20 players with the highest Skill")
 
 
 ### Top 30 Most Expensive Football Players in the World
@@ -557,6 +532,8 @@ plt.show()
 
 </details>
 
+![Top 30 Most Expensive Football Players in the World](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2030%20Most%20Expensive%20Football%20Players%20in%20the%20World.png "Top 30 Most Expensive Football Players in the World")
+
 
 ### Comparison of Player Skills
 <details>
@@ -593,6 +570,9 @@ plt.show()
 
 </details>
 
+![Comparison of Player Skills](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Comparison%20of%20Player%20Skills.png "Comparison of Player Skills")
+
+
 ### Distribution of Player Positions
 <details>
 <summary>Click to show code</summary>
@@ -628,6 +608,9 @@ plt.show()
 
 </details>
 
+![Distribution of Player Positions](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20of%20Player%20Positions.png "Distribution of Player Positions")
+
+
 ### Factors Leading to Goals
 <details>
 <summary>Click to show code</summary>
@@ -660,6 +643,9 @@ plt.show()
 ```
 
 </details>
+
+![Factors Leading to Goals](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Factors%20Leading%20to%20Goals.png "Factors Leading to Goals")
+
 
 ### Factors Leading to Goals (FacetGrid)
 <details>
@@ -706,6 +692,8 @@ plt.show()
 
 </details>
 
+![Factors Leading to Goals](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Factors%20Leading%20to%20Goals.png "Factors Leading to Goals")
+
 ### Preferred Foot and Power Shot Power, Attacking Finishing
 <details>
 <summary>Click to show code</summary>
@@ -744,6 +732,9 @@ plt.show()
 ```
 
 </details>
+
+![Preferred Foot and Power Shot Power, Attacking Finishing](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Preferred%20Foot%20and%20Power%20Shot%20Power%2C%20Attacking%20Finishing.png "Preferred Foot and Power Shot Power, Attacking Finishing")
+
 
 ### Manchester City Players' Stats
 <details>
@@ -809,7 +800,7 @@ plt.show()
 
 </details>
 
-### Comparison of Paris Saint-Germain and Manchester City
+### Comparison of Overall and Potential by Age across Leagues
 <details>
 <summary>Click to show code</summary>
 
@@ -835,7 +826,10 @@ plt.show()
 
 </details>
 
-### Comparison of Overall and Potential by Age across Leagues
+![Comparison of Overall and Potential by Age across Leagues](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Comparison%20of%20Overall%20and%20Potential%20by%20Age%20across%20Leagues.png "Comparison of Overall and Potential by Age across Leagues")
+
+
+### Comparison of Paris Saint-Germain and Manchester City
 <details>
 <summary>Click to show code</summary>
 
@@ -865,6 +859,9 @@ plt.show()
 ```
 
 </details>
+
+![Comparison of Paris Saint-Germain and Manchester City](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Comparison%20of%20Paris%20Saint-Germain%20and%20Manchester%20City.png "Comparison of Paris Saint-Germain and Manchester City")
+
 
 ### Random 10 Clubs by Contract Count
 <details>
@@ -898,6 +895,9 @@ plt.show()
 
 </details>
 
+![Random 10 Clubs by Contract Count](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Random%2010%20Clubs%20by%20Contract%20Count.png "Random 10 Clubs by Contract Count")
+
+
 ### Average Potential and Overall by Age for Bundesliga, Ligue 1, and EPL
 <details>
 <summary>Click to show code</summary>
@@ -923,6 +923,9 @@ plt.show()
 
 </details>
 
+![Random 10 Clubs by Contract Count](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Random%2010%20Clubs%20by%20Contract%20Count.png "Random 10 Clubs by Contract Count")
+
+
 ### Contract Count for Bundesliga, Ligue 1, and EPL
 <details>
 <summary>Click to show code</summary>
@@ -947,6 +950,10 @@ plt.show()
 ```
 
 </details>
+
+![Number of Contracts Expiring in Each League by Year](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Number%20of%20Contracts%20Expiring%20in%20Each%20League%20by%20Year.png "Number of Contracts Expiring in Each League by Year")
+
+
 ### Team Power for Every Position Class
 <details>
 <summary>Click to show code</summary>
@@ -977,6 +984,9 @@ plt.show()
 ```
 
 </details>
+
+![Team Power for Every Position Class](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Team%20Power%20for%20Every%20Position%20Class.png "Team Power for Every Position Class")
+
 
 ### Team Power for Every Position Class
 <details>
@@ -1010,6 +1020,8 @@ for index, row in top_players.iterrows():
 
 </details>
 
+![Team Power for Every Position Class](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Team%20Power%20for%20Every%20Position%20Class.png "Team Power for Every Position Class")
+
 
 ### Distribution of the Position Class in every League
 <details>
@@ -1034,6 +1046,9 @@ plt.show()
 ```
 
 </details>
+
+![Average Summary Statistics of Players by Position Class in the EPL](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%20Summary%20Statistics%20of%20Players%20by%20Position%20Class%20in%20the%20EPL.png "Average Summary Statistics of Players by Position Class in the EPL")
+
 
 ### Average Summary Statistics of Players by Position Class in the EPL
 <details>
@@ -1064,6 +1079,10 @@ plt.show()
 ```
 
 </details>
+
+![Average Summary Statistics of Players by Position Class in the EPL](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%20Summary%20Statistics%20of%20Players%20by%20Position%20Class%20in%20the%20EPL.png "Average Summary Statistics of Players by Position Class in the EPL")
+
+
 ### Highest Paid Player in Each League
 <details>
 <summary>Click to show code</summary>
@@ -1110,7 +1129,11 @@ plt.show()
 ```
 
 </details>
-### Average Summary Statistics of Players by Position Class in the EPL
+
+![Highest Paid Player in Each League](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Highest%20Paid%20Player%20in%20Each%20League.png "Highest Paid Player in Each League")
+
+
+### K-Means
 <details>
 <summary>Click to show code</summary>
 
@@ -1156,6 +1179,8 @@ plt.show()
 
 </details>
 
+![K-Means](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/K-Means.png "K-Means")
+
 ### Top 3 Wonderkids per Age Group
 <details>
 <summary>Click to show code</summary>
@@ -1188,3 +1213,6 @@ plt.show()
 ```
 
 </details>
+
+![Top 3 Wonderkids per Age Group](https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%203%20Wonderkids%20per%20Age%20Group.png "Top 3 Wonderkids per Age Group")
+
