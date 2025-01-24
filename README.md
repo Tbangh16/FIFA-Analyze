@@ -109,21 +109,22 @@ league_country_mapping = {
     'Eredivisie': ('Netherlands', eredivisie)
 }
 
-# Hàm để tìm league và country dựa trên tên club
+# Function to find the league and country based on the club name
 def get_league_and_country(club_name):
     for league, (country, clubs) in league_country_mapping.items():
         if club_name in clubs:
             return league, country
     return None, None
 
-# Áp dụng hàm để tạo các cột 'League' và 'Country'
+# Apply the function to create the 'League' and 'Country' columns
 df['League'], df['Country'] = zip(*df['club_name'].apply(get_league_and_country))
 
-# Lọc ra các dòng có giá trị 'League' là None
+# Filter rows where the 'League' value is None
 df = df.dropna(subset=['League'])
 
-# Hiển thị vài dòng đầu tiên của DataFrame
+# Display the first few rows of the DataFrame
 print(df.head())
+
 ```
 
 </details>
@@ -133,22 +134,23 @@ print(df.head())
 <summary>Click to show code</summary>
 
 ```r
-# Kiểm tra các kiểu dữ liệu của các cột liên quan
+# Check the data types of the relevant columns
 print(df[['value_eur', 'wage_eur']].dtypes)
 
-# Chuyển đổi cột 'value_eur' và 'wage_eur' thành chuỗi nếu cần thiết
+# Convert 'value_eur' and 'wage_eur' columns to strings if necessary
 df['value_eur'] = df['value_eur'].astype(str)
 df['wage_eur'] = df['wage_eur'].astype(str)
 
-# Xử lý cột 'Value' và 'Wage'
+# Process the 'Value' and 'Wage' columns
 df['Values'] = df['value_eur'].str.replace('€', '').str.replace('K', '000').str.replace('M', '').astype(float)
 df['Wages'] = df['wage_eur'].str.replace('€', '').str.replace('K', '000').astype(float)
 
-# Chuyển đổi giá trị 'Values' từ triệu sang đơn vị euro
+# Convert 'Values' from millions to euros
 df['Values'] = df['Values'].apply(lambda x: x * 1000000 if x < 1000 else x)
 
-# Hiển thị những dòng đầu tiên của DataFrame để kiểm tra
+# Display the first few rows of the DataFrame for checking
 print(df[['value_eur', 'Values', 'wage_eur', 'Wages']].head())
+
 ```
 
 </details>
@@ -160,16 +162,17 @@ print(df[['value_eur', 'Values', 'wage_eur', 'Wages']].head())
 
 ```r
 defence = ["CB", "RB", "LB", "LWB", "RWB", "LCB", "RCB"]
-midfielder = ["CM", "CDM","CAM","LM","RM", "LAM", "RAM", "LCM", "RCM", "LDM", "RDM"]
+midfielder = ["CM", "CDM", "CAM", "LM", "RM", "LAM", "RAM", "LCM", "RCM", "LDM", "RDM"]
 
-# Phân loại cầu thủ
+# Classify players
 df['Class'] = df['club_position'].apply(lambda x: 'Goal Keeper' if x == "GK" else
                                                   'Defender' if x in defence else
                                                   'Midfielder' if x in midfielder else
                                                   'Forward')
 
-# Hiển thị những dòng đầu tiên của DataFrame để kiểm tra
+# Display the first few rows of the DataFrame for checking
 print(df[['club_position', 'Class']].head(15))
+
 ```
 
 </details>
@@ -219,7 +222,7 @@ plt.show()
 
 <h2 align="center">Distribution & The Average Age of The Players in Each League</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20%26%20The%20Average%20Age%20of%20The%20Players%20in%20each%20League.png" alt="Distribution & The Average Age of The Players in each League" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20%26%20The%20Average%20Age%20of%20The%20Players%20in%20each%20League.png" alt="Distribution & The Average Age of The Players in each League" width="800">
 </p>
 
 
@@ -278,7 +281,7 @@ plt.show()
 
 <h2 align="center">Average, Oldest, and Youngest Age of Players by Country</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%2C%20Oldest%2C%20and%20Youngest%20Age%20of%20Players%20by%20Country.png" alt="Average, Oldest, and Youngest Age of Players by Country" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%2C%20Oldest%2C%20and%20Youngest%20Age%20of%20Players%20by%20Country.png" alt="Average, Oldest, and Youngest Age of Players by Country" width="800">
 </p>
 
 
@@ -332,7 +335,7 @@ plt.show()
 </details>
 <h2 align="center">Market Values of the Leagues</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Market%20Values%20of%20the%20Leagues.png" alt="Market Values of the Leagues" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Market%20Values%20of%20the%20Leagues.png" alt="Market Values of the Leagues" width="800">
 </p>
 
 
@@ -372,7 +375,7 @@ plt.show()
 </details>
 <h2 align="center">Top 3 Teams with Highest Value in Each League</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%203%20Teams%20with%20Highest%20Value%20in%20Each%20League.png" alt="Top 3 Teams with Highest Value in Each League" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%203%20Teams%20with%20Highest%20Value%20in%20Each%20League.png" alt="Top 3 Teams with Highest Value in Each League" width="800">
 </p>
 
 
@@ -418,7 +421,7 @@ plt.show()
 </details>
 <h2 align="center">Top 30 Most Expensive Football Players in the World</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2030%20Most%20Expensive%20Football%20Players%20in%20the%20World.png" alt="Top 30 Most Expensive Football Players in the World" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2030%20Most%20Expensive%20Football%20Players%20in%20the%20World.png" alt="Top 30 Most Expensive Football Players in the World" width="800">
 </p>
 
 
@@ -455,7 +458,7 @@ plt.show()
 
 <h2 align="center">Top 20 Players with the Highest Skill</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2020%20players%20with%20the%20highest%20Skill.png" alt="Top 20 players with the highest Skill" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%2020%20players%20with%20the%20highest%20Skill.png" alt="Top 20 players with the highest Skill" width="800">
 </p>
 
 
@@ -603,7 +606,7 @@ plt.show()
 
 <h2 align="center">Distribution of Player Positions</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20of%20Player%20Positions.png" alt="Distribution of Player Positions" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20of%20Player%20Positions.png" alt="Distribution of Player Positions" width="800">
 </p>
 
 
@@ -643,7 +646,7 @@ plt.show()
 
 <h2 align="center">Factors Leading to Goals</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Factors%20Leading%20to%20Goals.png" alt="Factors Leading to Goals" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Factors%20Leading%20to%20Goals.png" alt="Factors Leading to Goals" heigh="500",width="800">
 </p>
 
 
@@ -694,7 +697,7 @@ plt.show()
 </details>
 <h2 align="center">Factors Leading to Goals (FacetGrid)</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Factors%20Leading%20to%20Goals%201.png" alt="Factors Leading to Goals" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Factors%20Leading%20to%20Goals%201.png" alt="Factors Leading to Goals" width="800">
 </p>
 
 ### Preferred Foot and Power Shot Power, Attacking Finishing
@@ -737,7 +740,7 @@ plt.show()
 </details>
 <h2 align="center">Preferred Foot and Power Shot Power, Attacking Finishing</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/'Preferred%20Foot%20vs%20Attacking%20Finishing.png" alt="Preferred Foot and Power Shot Power, Attacking Finishing" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/'Preferred%20Foot%20vs%20Attacking%20Finishing.png" alt="Preferred Foot and Power Shot Power, Attacking Finishing" width="800">
 </p>
 
 
@@ -769,7 +772,7 @@ plt.show()
 </details>
 <h2 align="center">Comparison of Overall and Potential by Age across Leagues</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Comparison%20of%20Overall%20and%20Potential%20by%20Age%20across%20Leagues.png" alt="Comparison of Overall and Potential by Age across Leagues" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Comparison%20of%20Overall%20and%20Potential%20by%20Age%20across%20Leagues.png" alt="Comparison of Overall and Potential by Age across Leagues" width="800">
 </p>
 
 
@@ -805,7 +808,7 @@ plt.show()
 </details>
 <h2 align="center">Comparison of Paris Saint-Germain and Manchester City</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Comparison%20of%20Paris%20Saint-Germain%20and%20Manchester%20City.png" alt="Comparison of Paris Saint-Germain and Manchester City" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Comparison%20of%20Paris%20Saint-Germain%20and%20Manchester%20City.png" alt="Comparison of Paris Saint-Germain and Manchester City" width="800">
 </p>
 
 
@@ -843,7 +846,7 @@ plt.show()
 </details>
 <h2 align="center">Random 10 Clubs by Contract Count</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Random%2010%20Clubs%20by%20Contract%20Count.png" alt="Random 10 Clubs by Contract Count" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Random%2010%20Clubs%20by%20Contract%20Count.png" alt="Random 10 Clubs by Contract Count" width="800">
 </p>
 
 
@@ -874,7 +877,7 @@ plt.show()
 </details>
 <h2 align="center">Average Potential and Overall by Age for Bundesliga, Ligue 1, and EPL</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%20Potential%20and%20Overall%20by%20Age%20for%20Bundesliga%2C%20Ligue%201%2C%20and%20EPL.png" alt="Average Potential and Overall by Age for Bundesliga, Ligue 1, and EPL" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%20Potential%20and%20Overall%20by%20Age%20for%20Bundesliga%2C%20Ligue%201%2C%20and%20EPL.png" alt="Average Potential and Overall by Age for Bundesliga, Ligue 1, and EPL" width="800">
 </p>
 
 
@@ -905,7 +908,7 @@ plt.show()
 </details>
 <h2 align="center">Number of Contracts Expiring in Each League by Year</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Number%20of%20Contracts%20Expiring%20in%20Each%20League%20by%20Year.png" alt="Number of Contracts Expiring in Each League by Year" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Number%20of%20Contracts%20Expiring%20in%20Each%20League%20by%20Year.png" alt="Number of Contracts Expiring in Each League by Year" width="800">
 </p>
 
 
@@ -942,7 +945,7 @@ plt.show()
 </details>
 <h2 align="center">Team Power for Every Position Class</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Team%20Power%20for%20Every%20Position%20Class.png" alt="Team Power for Every Position Class" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Team%20Power%20for%20Every%20Position%20Class.png" alt="Team Power for Every Position Class" width="800">
 </p>
 
 
@@ -1004,7 +1007,7 @@ plt.show()
 </details>
 <h2 align="center">Distribution of the Position Class in Every League</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20of%20the%20Position%20Class%20in%20every%20League.png" alt="Distribution of the Position Class in every League" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20of%20the%20Position%20Class%20in%20every%20League.png" alt="Distribution of the Position Class in every League" width="800">
 </p>
 
 
@@ -1040,7 +1043,7 @@ plt.show()
 </details>
 <h2 align="center">Average Summary Statistics of Players by Position Class in the EPL</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%20Summary%20Statistics%20of%20Players%20by%20Position%20Class%20in%20the%20Premier%20League.png" alt="Average Summary Statistics of Players by Position Class in the EPL" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Average%20Summary%20Statistics%20of%20Players%20by%20Position%20Class%20in%20the%20Premier%20League.png" alt="Average Summary Statistics of Players by Position Class in the EPL" width="800">
 </p>
 
 
@@ -1093,7 +1096,7 @@ plt.show()
 </details>
 <h2 align="center">Highest Paid Player in Each League</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Highest%20Paid%20Player%20in%20Each%20League.png" alt="Highest Paid Player in Each League" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Highest%20Paid%20Player%20in%20Each%20League.png" alt="Highest Paid Player in Each League" width="800">
 </p>
 
 
@@ -1145,7 +1148,7 @@ plt.show()
 </details>
 <h2 align="center">K-Means</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/K-Means.png" alt="K-Means" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/K-Means.png" alt="K-Means" width="800">
 </p>
 
 
@@ -1183,7 +1186,7 @@ plt.show()
 </details>
 <h2 align="center">Top 3 Wonderkids per Age Group</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%203%20Wonderkids%20per%20Age%20Group.png" alt="Top 3 Wonderkids per Age Group" width="500">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Top%203%20Wonderkids%20per%20Age%20Group.png" alt="Top 3 Wonderkids per Age Group" width="800">
 </p>
 
 
