@@ -21,11 +21,37 @@ This project uses Python to analyze the dataset of FIFA 22 players. The goal of 
 
 4. **Machine Learning and Data Exploration:**  
    - **`sklearn.datasets`**: Provides sample datasets for testing and implementing machine learning models.  
+   - **`PCA (Principal Component Analysis)`**: Reduces data dimensionality and extracts key components.  
+   - **`StandardScaler`**: Standardizes data to a uniform scale for better model performance.  
+   - **`KMeans`**: A clustering algorithm to classify data into distinct groups.
 
 5. **Natural Language Processing:**  
    - **`nltk`**: Offers tools for analyzing and processing text, particularly useful for handling descriptive or textual data.
 
+6. **Mathematical Tools:**  
+   - **`math (pi)`**: Provides the mathematical constant π (pi) and various functions such as trigonometry, logarithms, and power calculations, useful for geometry, angles, and advanced computations.
+<details>
+<summary>Click to show code</summary> 
   
+```r
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.express as px
+import seaborn as sns
+from sklearn import datasets
+import geopandas as gpd
+import nltk
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from math import pi
+
+```
+
+</details>
+
+
 ## Prepare Data for Exploration
 The <a href="https://github.com/Tbangh16/FIFA-Analyze/blob/master/players_22.csv">dataset</a> players_22.csv includes over 100 columns with detailed information on player attributes, positions, clubs, and countries.
 
@@ -58,26 +84,6 @@ print(df.head())
 <summary>Click to show code</summary> 
   
 ```r
-# Plot missing values ratio
-missing = df.isnull().mean() * 100
-missing = missing[missing > 0].sort_values()
-plt.figure(figsize=(10, 6))
-colors = plt.cm.Reds(np.linspace(0.3, 1, len(missing)))
-missing.plot(kind='bar', color=colors)
-plt.title('Percentage of Missing Values', fontsize=16, color='darkred')
-plt.xlabel('Columns', fontsize=12, color='darkred')
-plt.ylabel('Percentage', fontsize=12, color='darkred')
-plt.show()
-
-# Plot count of each data type
-plt.figure(figsize=(10, 6))
-colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', 'pink', 'yellow']
-df.dtypes.value_counts().plot(kind='bar', color=colors)
-plt.title('Count of Data Types', fontsize=16, color='darkorange')
-plt.xlabel('Data Types', fontsize=12, color='darkorange')
-plt.ylabel('Count', fontsize=12, color='darkorange')
-plt.show()
-
 # Plot count of unique values in each column
 plt.figure(figsize=(14, 10))
 colors = plt.cm.Blues(np.linspace(0.3, 1, len(df.nunique())))
@@ -91,6 +97,10 @@ plt.show()
 
 </details>
 
+<h2 align="center">Unique Values Count</h2>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Count%20of%20Unique%20Values%20per%20Column.png" alt="Unique Values Count" width="800">
+</p>
 
 ### Step 1 :Tạo từ điển mapping cho các league và country
 
@@ -98,6 +108,63 @@ plt.show()
 <summary>Click to show code</summary>
 
 ```r
+# Define club lists for each league
+bundesliga = [
+  "1. FC Nürnberg", "1. FSV Mainz 05", "Bayer 04 Leverkusen", "FC Bayern München",
+  "Borussia Dortmund", "Borussia Mönchengladbach", "Eintracht Frankfurt",
+  "FC Augsburg", "FC Schalke 04", "Fortuna Düsseldorf", "Hannover 96",
+  "Hertha BSC", "RB Leipzig", "SC Freiburg", "TSG 1899 Hoffenheim",
+  "VfB Stuttgart", "VfL Wolfsburg", "SV Werder Bremen"
+]
+
+premierLeague = [
+  "Arsenal", "Bournemouth", "Brighton & Hove Albion", "Burnley",
+  "Cardiff City", "Chelsea", "Crystal Palace", "Everton", "Fulham",
+  "Huddersfield Town", "Leicester City", "Liverpool", "Manchester City",
+  "Manchester United", "Newcastle United", "Southampton", 
+  "Tottenham Hotspur", "Watford", "West Ham United", "Wolverhampton Wanderers"
+]
+
+laliga = [
+  "Athletic Club de Bilbao", "Atlético Madrid", "CD Leganés",
+  "Deportivo Alavés", "FC Barcelona", "Getafe CF", "Girona FC", 
+  "Levante UD", "Rayo Vallecano", "RC Celta", "RCD Espanyol", 
+  "Real Betis", "Real Madrid", "Real Sociedad", "Real Valladolid CF",
+  "SD Eibar", "SD Huesca", "Sevilla FC", "Valencia CF", "Villarreal CF"
+]
+
+seriea = [
+  "Atalanta","Bologna","Cagliari","Chievo Verona","Empoli", "Fiorentina","Frosinone","Genoa",
+  "Inter","Juventus","Lazio","Milan","Napoli","Parma","Roma","Sampdoria","Sassuolo","SPAL",
+  "Torino","Udinese"
+]
+
+superlig = [
+  "Akhisar Belediyespor","Alanyaspor", "Antalyaspor","Medipol Başakşehir FK","BB Erzurumspor","Beşiktaş JK",
+  "Bursaspor","Çaykur Rizespor","Fenerbahçe SK", "Galatasaray SK","Göztepe SK","Kasimpaşa SK",
+  "Kayserispor","Atiker Konyaspor","MKE Ankaragücü", "Sivasspor","Trabzonspor","Yeni Malatyaspor"
+]
+
+ligue1 = [
+  "Amiens SC", "Angers SCO", "AS Monaco", "AS Saint-Étienne", "Dijon FCO", "En Avant de Guingamp",
+  "FC Nantes", "FC Girondins de Bordeaux", "LOSC Lille", "Montpellier HSC", "Nîmes Olympique", 
+  "OGC Nice", "Olympique Lyonnais","Olympique de Marseille", "Paris Saint-Germain", 
+  "RC Strasbourg Alsace", "Stade Malherbe Caen", "Stade de Reims", "Stade Rennais FC", "Toulouse Football Club"
+]
+
+eredivisie = [
+  "ADO Den Haag","Ajax", "AZ Alkmaar", "De Graafschap","Excelsior","FC Emmen","FC Groningen",
+  "FC Utrecht", "Feyenoord","Fortuna Sittard", "Heracles Almelo","NAC Breda",
+  "PEC Zwolle", "PSV","SC Heerenveen","Vitesse","VVV-Venlo","Willem II"
+]
+
+liganos = [
+  "Os Belenenses", "Boavista FC", "CD Feirense", "CD Tondela", "CD Aves", "FC Porto",
+  "CD Nacional", "GD Chaves", "Clube Sport Marítimo", "Moreirense FC", "Portimonense SC", "Rio Ave FC",
+  "Santa Clara", "SC Braga", "SL Benfica", "Sporting CP", "Vitória Guimarães", "Vitória de Setúbal"
+]
+
+# Create mapping dictionary for leagues and countries
 league_country_mapping = {
     'Bundesliga': ('Germany', bundesliga),
     'Premier League': ('UK', premierLeague),
@@ -109,25 +176,35 @@ league_country_mapping = {
     'Eredivisie': ('Netherlands', eredivisie)
 }
 
-# Function to find the league and country based on the club name
+# Function to find league and country based on club name
 def get_league_and_country(club_name):
     for league, (country, clubs) in league_country_mapping.items():
         if club_name in clubs:
             return league, country
     return None, None
 
-# Apply the function to create the 'League' and 'Country' columns
+# Apply the function to create 'League' and 'Country' columns
 df['League'], df['Country'] = zip(*df['club_name'].apply(get_league_and_country))
 
-# Filter rows where the 'League' value is None
+# Filter out rows with 'League' value as None
 df = df.dropna(subset=['League'])
 
 # Display the first few rows of the DataFrame
 print(df.head())
 
-```
+df['League'].head()
 
+
+```
 </details>
+
+| Index | League          |
+|-------|-----------------|
+| 0     | Ligue 1         |
+| 1     | Bundesliga      |
+| 2     | Premier League  |
+| 3     | Ligue 1         |
+| 4     | Premier League  |
 
 ### Step 2 : Xử lý các cột đơn vị tiền tệ
 <details>
@@ -155,30 +232,86 @@ print(df[['value_eur', 'Values', 'wage_eur', 'Wages']].head())
 
 </details>
 
+| value_eur    | Values        | wage_eur    | Wages        |
+|---------------|---------------|-------------|--------------|
+| 78000000.0    | 78000000.0    | 320000.0    | 320000.0     |
+| 119500000.0   | 119500000.0   | 270000.0    | 270000.0     |
+| 45000000.0    | 45000000.0    | 270000.0    | 270000.0     |
+| 129000000.0   | 129000000.0   | 270000.0    | 270000.0     |
+| 125500000.0   | 125500000.0   | 350000.0    | 350000.0     |
+
 ### Step 3 : Phân loại cầu thủ
 
 <details>
 <summary>Click to show code</summary>
 
 ```r
+# Filter values "Left" and "Right"
+df = df[df['preferred_foot'].isin(["Left", "Right"])]
+
 defence = ["CB", "RB", "LB", "LWB", "RWB", "LCB", "RCB"]
-midfielder = ["CM", "CDM", "CAM", "LM", "RM", "LAM", "RAM", "LCM", "RCM", "LDM", "RDM"]
+midfielder = ["CM", "CDM","CAM","LM","RM", "LAM", "RAM", "LCM", "RCM", "LDM", "RDM"]
+forward = ["CF", "ST", "LW", "RW", "LS", "RS", "LF", "RF"]
 
 # Classify players
 df['Class'] = df['club_position'].apply(lambda x: 'Goal Keeper' if x == "GK" else
                                                   'Defender' if x in defence else
                                                   'Midfielder' if x in midfielder else
-                                                  'Forward')
+                                                  'Forward' if x in forward else
+                                                  'Unknown')
 
 # Display the first few rows of the DataFrame for checking
-print(df[['club_position', 'Class']].head(15))
-
+print(df[['club_position', 'Class', 'Preferred.Foot']].head())
 ```
 
 </details>
 
+| club_position | Class        | Preferred.Foot |
+|----------------|--------------|----------------|
+| RW             | Forward      | Left           |
+| ST             | Forward      | Right          |
+| ST             | Forward      | Right          |
+| LW             | Forward      | Right          |
+| RCM            | Midfielder   | Right          |
+
+
+
+### Step 3 : Drop and 
+
+<details>
+<summary>Click to show code</summary>
+
+```r
+# Drop unnecessary columns
+df = df.drop(columns=[
+    "sofifa_id", "body_type", "real_face", "club_joined", "club_loaned_from",
+    "release_clause_eur", "player_face_url", "club_flag_url", "club_logo_url", "nation_flag_url", 
+    "work_rate"
+])
+
+# Plot the count of unique values per column
+plt.figure(figsize=(14, 10))
+colors = plt.cm.Blues(np.linspace(0.3, 1, len(df.nunique())))
+df.nunique().sort_values(ascending=False).plot(kind='bar', color=colors)
+plt.title('Count of Unique Values per Column', fontsize=12, color='darkgreen')
+plt.show()
+```
+
+<h2 align="center">Unique Values Count</h2>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Count%20of%20Unique%20Values%20per%20Column%201.png" alt="Unique Values Count" width="800">
+</p>
+</details>
 
 ### Distribution & The Average Age of The Players in each League
+
+* **Ligue 1**: Average age is 24.12, youthful talent.
+* **Bundesliga**: Average age is 24.13, similar to Ligue 1.
+* **Premier League**: Average age is 24.85, balancing youth and experience.
+* Eredivisie: Youngest average age at 23.1.
+* Serie A: Oldest average age at 26.17.
+* Other leagues range between 23.97 and 26.05 years old.
+
 <details>
 <summary>Click to show code</summary>
 
@@ -227,6 +360,11 @@ plt.show()
 
 
 ### Average, Oldest, and Youngest Age of Players by Country
+
+*   **Average Age:** Most teams have an average age between 24 and 26.
+*   **Oldest Players:** Gianluigi Buffon (43, Italy) is the oldest player. Several others are in their late 30s (e.g., N. Penneteau, Bracali, M. Stekelenburg, A. Hutchinson, B. Foster, M. Hasebe, Riesgo).
+*   **Youngest Players:** Many players are 16 or 17 years old, indicating a focus on youth development (e.g., R. Cherki, W. Faghir, K. Urbański, R. van den Berg, Tiago Morais, Gavi, E. Bilgin, T. Small).
+
 <details>
 <summary>Click to show code</summary>
 
@@ -287,6 +425,14 @@ plt.show()
 
 
 ### Market Values of the Leagues
+
+
+* **Highest Market Value:** The English Premier League exceeds 8 billion €.
+* **Lowest Market Value:** Italian Serie B is just above 0 billion €.
+* **Top Five Leagues:** Dominated by the English Premier League, German 1. Bundesliga, Italian Serie A, French Ligue 1, and Spain Primera Division.
+* **Significant Disparity:** A wide range in market values, indicating economic disparities.
+* **Concentration of Talent:** Higher market values suggest a concentration of talent and financial resources in top leagues.
+
 <details>
 <summary>Click to show code</summary>
 
@@ -340,6 +486,14 @@ plt.show()
 
 
 ### Top 3 Teams with Highest Value in Each League
+
+* **Highest Market Value:** Paris Saint-Germain.
+* **Leagues Representation:** Top teams from various leagues like French Ligue 1, German 1. Bundesliga, English Premier League, and more.
+* **Wide Range:** Market values vary significantly among the teams.
+* **Top Teams by Leagues:** Dominance of teams from top European leagues.
+* **Economic Disparity:** Noticeable gap in market values across different teams and leagues.
+
+
 <details>
 <summary>Click to show code</summary>
 
