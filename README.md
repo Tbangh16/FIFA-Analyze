@@ -63,18 +63,6 @@ The <a href="https://github.com/Tbangh16/FIFA-Analyze/blob/master/players_22.csv
 df <- read.csv("players_22.csv", encoding = "UTF-8")[-1]
 head(df)
 ```
-```r
-# Display general information about the DataFrame
-print("General information about the DataFrame:") 
-print(df.info()) 
-# Display descriptive statistics
-print("\nDescriptive Statistics:") 
-print(df.describe()) 
-# Display the first few rows of the DataFrame
-print("\nFirst few rows of the DataFrame:") 
-print(df.head())
-
-```
 </details>
 
 
@@ -99,10 +87,10 @@ plt.show()
 
 <h2 align="center">Unique Values Count</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Count%20of%20Unique%20Values%20per%20Column.png" alt="Unique Values Count" width="800">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Count%20of%20Unique%20Values%20per%20Column.png" alt="Unique Values Count" width="600">
 </p>
 
-### Step 1 :Tạo từ điển mapping cho các league và country
+### Step 1 : Create Mapping Dictionary For Leagues And Countries
 
 <details>
 <summary>Click to show code</summary>
@@ -206,7 +194,7 @@ df['League'].head()
 | 3     | Ligue 1         |
 | 4     | Premier League  |
 
-### Step 2 : Xử lý các cột đơn vị tiền tệ
+### Step 2 : Processing Currency Unit Columns
 <details>
 <summary>Click to show code</summary>
 
@@ -240,7 +228,7 @@ print(df[['value_eur', 'Values', 'wage_eur', 'Wages']].head())
 | 129000000.0   | 129000000.0   | 270000.0    | 270000.0     |
 | 125500000.0   | 125500000.0   | 350000.0    | 350000.0     |
 
-### Step 3 : Phân loại cầu thủ
+### Step 3 : Classify Players And Preferred Foot
 
 <details>
 <summary>Click to show code</summary>
@@ -276,7 +264,7 @@ print(df[['club_position', 'Class', 'Preferred.Foot']].head())
 
 
 
-### Step 3 : Drop and 
+### Step 4 : Remove Unnecessary Data Columns And Check
 
 <details>
 <summary>Click to show code</summary>
@@ -296,14 +284,15 @@ df.nunique().sort_values(ascending=False).plot(kind='bar', color=colors)
 plt.title('Count of Unique Values per Column', fontsize=12, color='darkgreen')
 plt.show()
 ```
+</details>
 
 <h2 align="center">Unique Values Count</h2>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Count%20of%20Unique%20Values%20per%20Column%201.png" alt="Unique Values Count" width="800">
+  <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Count%20of%20Unique%20Values%20per%20Column%201.png" alt="Unique Values Count" width="600">
 </p>
-</details>
 
-### Distribution & The Average Age of The Players in each League
+
+## Distribution & The Average Age of The Players in each League
 
 * **Ligue 1**: Average age is 24.12, youthful talent.
 * **Bundesliga**: Average age is 24.13, similar to Ligue 1.
@@ -359,7 +348,7 @@ plt.show()
 </p>
 
 
-### Average, Oldest, and Youngest Age of Players by Country
+## Average, Oldest, and Youngest Age of Players by Country
 
 *   **Average Age:** Most teams have an average age between 24 and 26.
 *   **Oldest Players:** Gianluigi Buffon (43, Italy) is the oldest player. Several others are in their late 30s (e.g., N. Penneteau, Bracali, M. Stekelenburg, A. Hutchinson, B. Foster, M. Hasebe, Riesgo).
@@ -424,7 +413,7 @@ plt.show()
 
 
 
-### Market Values of the Leagues
+## Market Values of the Leagues
 
 
 * **Highest Market Value:** The English Premier League exceeds 8 billion €.
@@ -485,7 +474,7 @@ plt.show()
 </p>
 
 
-### Top 3 Teams with Highest Value in Each League
+## Top 3 Teams with Highest Value in Each League
 
 * **Highest Market Value:** Paris Saint-Germain.
 * **Leagues Representation:** Top teams from various leagues like French Ligue 1, German 1. Bundesliga, English Premier League, and more.
@@ -534,7 +523,7 @@ plt.show()
 
 
 
-### Top 30 Most Expensive Football Players in the World
+## Top 30 Most Expensive Football Players in the World
 
 * **Kylian Mbappé tops the list as the most expensive player, significantly ahead of others.**  
 * **The chart highlights young talents like Haaland and Sancho alongside experienced players like Lewandowski.**  
@@ -587,7 +576,7 @@ plt.show()
 
 
 
-### Top 20 players with the highest Skill
+## Top 20 players with the highest Skill
 
 * **Lionel Messi leads the chart with the highest skill rating, closely followed by Lewandowski and Ronaldo.**  
 * **The chart reflects a balance between forwards, midfielders, and goalkeepers in the top skill rankings.**  
@@ -631,7 +620,7 @@ plt.show()
 
 
 
-### Comparison of Messi, Ronaldo, and Lewandowski
+## Comparison of Messi, Ronaldo, and Lewandowski
 
 * **Lionel Messi excels in dribbling and vision, showcasing his playmaking skills.**
 * **Cristiano Ronaldo displays outstanding shot power and curve, emphasizing his goal-scoring prowess.**
@@ -704,7 +693,7 @@ plt.show()
 
 
 
-### Comparison of Player Skills
+## Comparison of Player Skills
 
 * **Lionel Messi has high ratings in dribbling and passing, showcasing his playmaking ability.**
 * **Cristiano Ronaldo excels in shooting and physic, emphasizing his goal-scoring prowess.**
@@ -753,7 +742,7 @@ plt.show()
 </p>
 
 
-### Distribution of Player Positions
+## Distribution of Player Positions
 
 * **Central Midfielders (CM) have the highest number of players, totaling around 750.**
 * **Center Backs (CB) follow with approximately 700 players, showcasing the importance of defense.**
@@ -801,7 +790,7 @@ plt.show()
   <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20of%20Player%20Positions.png" alt="Distribution of Player Positions" width="800">
 </p>
 
-### Factors Leading to Goals
+## Factors Leading to Goals
 
 * **The histogram indicates that the majority of players have a high attacking_finishing score.**
 * **The scatter plot between attacking_finishing and power_shot_power shows a strong positive correlation.**
@@ -849,7 +838,7 @@ plt.show()
 
 
 
-### Factors Leading to Goals (FacetGrid)
+## Factors Leading to Goals (FacetGrid)
 
 * **Attacking Finishing** shows a strong positive correlation with **power_shot_power** and **power_long_shots**.
 * **Attacking Volleys** and **mentality_penalties** display a significant positive correlation with **Attacking Finishing**.
@@ -906,7 +895,7 @@ plt.show()
   <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Factors%20Leading%20to%20Goals%201.png" alt="Factors Leading to Goals" width="800">
 </p>
 
-### Preferred Foot and Power Shot Power, Attacking Finishing
+## Preferred Foot and Power Shot Power, Attacking Finishing
 
 * **Left-footed players have a slightly lower median Power Shot Power compared to Right-footed players.**
 * **The interquartile ranges for Power Shot Power are similar for both foot preferences, spanning from 60 to 80.**
@@ -959,7 +948,7 @@ plt.show()
 
 
 
-### Comparison of Overall and Potential by Age across Leagues
+## Comparison of Overall and Potential by Age across Leagues
 
 * **Players' overall and potential ratings increase with age across various football leagues.**
 * **English Premier League players show a steady rise in ratings until their mid-20s.**
@@ -998,7 +987,7 @@ plt.show()
 </p>
 
 
-### Comparison of Paris Saint-Germain and Manchester City
+## Comparison of Paris Saint-Germain and Manchester City
 
 * **Key Players**: Notable names include Messi, Neymar Jr, and Mbappé from PSG, and De Bruyne, Sterling, and Ederson from Manchester City.
 * **Rating Highlights**: Both overall and potential ratings are represented, highlighting current performance and future potential.
@@ -1043,7 +1032,7 @@ plt.show()
 
 
 
-### Random 10 Clubs by Contract Count
+## Random 10 Clubs by Contract Count
 
 * **West Ham United** has the highest number of contracts, totaling 33.
 * **1. FSV Mainz 05** follows closely with 32 contracts.
@@ -1089,7 +1078,7 @@ plt.show()
 
 
 
-### Average Potential and Overall by Age for Bundesliga, Ligue 1, and EPL
+## Average Potential and Overall by Age for Bundesliga, Ligue 1, and EPL
 
 * **Average Ratings:** The graph tracks average player ratings by age for the English Premier League, French Ligue 1, and German 1. Bundesliga.
 * **Rating Trends:** Players in all leagues show an increase in average ratings until their mid-20s.
@@ -1128,7 +1117,7 @@ plt.show()
 
 
 
-### Contract Count for Bundesliga, Ligue 1, and EPL
+## Contract Count for Bundesliga, Ligue 1, and EPL
 
 * **Highest Number of Expirations in 2022:** The English Premier League leads with the most contracts expiring, followed by French Ligue 1 and German 1. Bundesliga.
 * **Trend Over the Years:** The number of expiring contracts declines as the years progress towards 2027.
@@ -1168,7 +1157,7 @@ plt.show()
 
 
 
-### Team Power for Every Position Class
+## Team Power for Every Position Class
 <details>
 <summary>Click to show code</summary>
 
@@ -1205,7 +1194,7 @@ plt.show()
 
 
 
-### Team Power for Every Position Class
+## Team Power for Every Position Class
 
 <details>
 <summary>Click to show code</summary>
@@ -1238,9 +1227,9 @@ for index, row in top_players.iterrows():
 
 </details>
 
-### Player Statistics
+## Player Statistics
 
-#### Virgil van Dijk
+### Virgil van Dijk
 | Player             | Position  | Skill      | Value |
 |--------------------|-----------|------------|-------|
 | Virgil van Dijk    | Defender  | defending  | 91.0  |
@@ -1248,7 +1237,7 @@ for index, row in top_players.iterrows():
 | Virgil van Dijk    | Defender  | pace       | 78.0  |
 | Virgil van Dijk    | Defender  | dribbling  | 72.0  |
 
-#### Lionel Andrés Messi Cuccittini
+### Lionel Andrés Messi Cuccittini
 | Player                             | Position  | Skill      | Value |
 |------------------------------------|-----------|------------|-------|
 | Lionel Andrés Messi Cuccittini     | Forward   | dribbling  | 95.0  |
@@ -1256,7 +1245,7 @@ for index, row in top_players.iterrows():
 | Lionel Andrés Messi Cuccittini     | Forward   | passing    | 91.0  |
 | Lionel Andrés Messi Cuccittini     | Forward   | pace       | 85.0  |
 
-#### Manuel Peter Neuer
+### Manuel Peter Neuer
 | Player             | Position      | Skill      | Value |
 |--------------------|---------------|------------|-------|
 | Manuel Peter Neuer | Goal Keeper   | pace       | NaN   |
@@ -1264,7 +1253,7 @@ for index, row in top_players.iterrows():
 | Manuel Peter Neuer | Goal Keeper   | passing    | NaN   |
 | Manuel Peter Neuer | Goal Keeper   | dribbling  | NaN   |
 
-#### Kevin De Bruyne
+### Kevin De Bruyne
 | Player            | Position    | Skill      | Value |
 |-------------------|-------------|------------|-------|
 | Kevin De Bruyne   | Midfielder  | passing    | 93.0  |
@@ -1273,7 +1262,7 @@ for index, row in top_players.iterrows():
 | Kevin De Bruyne   | Midfielder  | physic     | 78.0  |
 
 
-### Distribution of the Position Class in every League
+## Distribution of the Position Class in every League
 
 * **Defenders and Midfielders dominate** across most leagues, with the highest counts in the **English League Championship** and **English Premier League**.
 * **Forwards and Goal Keepers** have fewer players in comparison, highlighting the specialized nature of these positions.
@@ -1311,7 +1300,7 @@ plt.show()
 
 
 
-### Average Summary Statistics of Players by Position Class in the EPL
+## Average Summary Statistics of Players by Position Class in the EPL
 
 * **Defenders and Midfielders:** Excelling in defending and physic, as expected.
 * **Forwards:** Strong in shooting and dribbling, highlighting their offensive skills.
@@ -1355,7 +1344,7 @@ plt.show()
 
 
 
-### Highest Paid Player in Each League
+## Highest Paid Player in Each League
 
 * **Highest Paid Player**: Kevin De Bruyne leads with the highest wage in the English Premier League at around 350,000 EUR.
 * **French Ligue 1**: Lionel Messi follows closely as the top earner.
@@ -1415,7 +1404,7 @@ plt.show()
 
 
 
-### K-Means
+## K-Means
 
 * **k = 2 Clusters**: The plot shows a clear distinction between two main clusters, indicating a fundamental grouping of forward players based on their skills.
 * **k = 3 Clusters**: Adding a third cluster reveals more nuanced groupings, capturing additional subgroups within the primary clusters.
@@ -1474,7 +1463,7 @@ plt.show()
 </p>
 
 
-### Top 3 Wonderkids per Age Group
+## Top 3 Wonderkids per Age Group
 
 * **Top Potential Ratings**: The chart displays potential ratings of top young football players across different age groups (17, 18, 19, and 20 years old).
 * **Age 17**: M. Cho, Pedri, and J. Bellingham are the top 3 wonderkids with high potential ratings.
