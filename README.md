@@ -3,6 +3,13 @@
   <img src="https://www.fifaultimateteam.it/en/wp-content/uploads/2021/06/cover-fifa-22.jpg" />
 </p>
 
+- [Description](https://github.com/Tbangh16/FIFA-Analyze/edit/master/README.md#analysis-tasks)
+- [Packages](#packages)
+- [Prepare Data for Exploration](#prepare-data-for-exploration)
+- [Process Data from Dirty to Clean](#process-data-from-dirty-to-clean)
+- [Analysis Tasks](#analysis-tasks)
+
+
 ## Description
 This project uses Python to analyze the dataset of FIFA 22 players. The goal of the project is to answer key questions about player performance, market trends, and value insights, ultimately supporting better decision-making for clubs, investors, and researchers in the football industry.
 
