@@ -535,6 +535,13 @@ plt.show()
 
 
 ### Top 30 Most Expensive Football Players in the World
+
+* **Kylian Mbappé tops the list as the most expensive player, significantly ahead of others.**  
+* **The chart highlights young talents like Haaland and Sancho alongside experienced players like Lewandowski.**  
+* **Paris Saint-Germain dominates with multiple players featured, reflecting its strong financial backing.**  
+* **Premier League clubs like Manchester City and Liverpool have a substantial presence on the list.**  
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -581,6 +588,13 @@ plt.show()
 
 
 ### Top 20 players with the highest Skill
+
+* **Lionel Messi leads the chart with the highest skill rating, closely followed by Lewandowski and Ronaldo.**  
+* **The chart reflects a balance between forwards, midfielders, and goalkeepers in the top skill rankings.**  
+* **Notable defenders like Sergio Ramos and Van Dijk are included, highlighting their technical abilities.**  
+* **Younger talents such as Kylian Mbappé stand out alongside seasoned players like Neuer and Messi.**  
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -618,6 +632,14 @@ plt.show()
 
 
 ### Comparison of Messi, Ronaldo, and Lewandowski
+
+* **Lionel Messi excels in dribbling and vision, showcasing his playmaking skills.**
+* **Cristiano Ronaldo displays outstanding shot power and curve, emphasizing his goal-scoring prowess.**
+* **Robert Lewandowski has a balanced skill set with notable strengths in balance and shot power.**
+* **The charts highlight the unique strengths of each player across various skill attributes.**
+* **Overall, the visual comparison effectively illustrates the diverse skill sets of these top footballers.**
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -683,6 +705,14 @@ plt.show()
 
 
 ### Comparison of Player Skills
+
+* **Lionel Messi has high ratings in dribbling and passing, showcasing his playmaking ability.**
+* **Cristiano Ronaldo excels in shooting and physic, emphasizing his goal-scoring prowess.**
+* **The radar chart highlights the contrasting strengths of each player in different skill areas.**
+* **Messi’s lower physic rating contrasts with Ronaldo’s strength in this area.**
+* **Overall, the chart effectively visualizes the unique skills of both players.**
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -724,6 +754,14 @@ plt.show()
 
 
 ### Distribution of Player Positions
+
+* **Central Midfielders (CM) have the highest number of players, totaling around 750.**
+* **Center Backs (CB) follow with approximately 700 players, showcasing the importance of defense.**
+* **Strikers (ST) have a significant presence, with around 600 players listed.**
+* **Central Defensive Midfielders (CDM) and Central Attacking Midfielders (CAM) also show strong representation with 550 and 500 players, respectively.**
+* **The chart highlights the distribution of players across different positions, emphasizing the depth in midfield and defense.**
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -763,9 +801,15 @@ plt.show()
   <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Distribution%20of%20Player%20Positions.png" alt="Distribution of Player Positions" width="800">
 </p>
 
-
-
 ### Factors Leading to Goals
+
+* **The histogram indicates that the majority of players have a high attacking_finishing score.**
+* **The scatter plot between attacking_finishing and power_shot_power shows a strong positive correlation.**
+* **There is a noticeable trend between attacking_finishing and power_long_shots, indicating skill overlap.**
+* **Attacking_volleys and mentality_penalties both have moderate correlations with attacking_finishing.**
+* **Overall, the plots reveal various factors contributing to successful attacking plays.**
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -806,6 +850,14 @@ plt.show()
 
 
 ### Factors Leading to Goals (FacetGrid)
+
+* **Attacking Finishing** shows a strong positive correlation with **power_shot_power** and **power_long_shots**.
+* **Attacking Volleys** and **mentality_penalties** display a significant positive correlation with **Attacking Finishing**.
+* **Mentality Composure** and **Attacking Heading Accuracy** have moderate correlations with **Attacking Finishing**.
+* **Players like Messi and Ronaldo exhibit high values in key skills, enhancing their goal-scoring capabilities.**
+* **The charts effectively visualize the relationship between various skill values and Attacking Finishing.**
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -855,6 +907,14 @@ plt.show()
 </p>
 
 ### Preferred Foot and Power Shot Power, Attacking Finishing
+
+* **Left-footed players have a slightly lower median Power Shot Power compared to Right-footed players.**
+* **The interquartile ranges for Power Shot Power are similar for both foot preferences, spanning from 60 to 80.**
+* **Attacking Finishing shows a higher median for Right-footed players (around 60) compared to Left-footed players (around 55).**
+* **Both box plots highlight the distributions and central tendencies of Power Shot Power and Attacking Finishing.**
+* **Outliers are present in the Power Shot Power distribution for Left-footed players, but not for Right-footed players.**
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -900,6 +960,14 @@ plt.show()
 
 
 ### Comparison of Overall and Potential by Age across Leagues
+
+* **Players' overall and potential ratings increase with age across various football leagues.**
+* **English Premier League players show a steady rise in ratings until their mid-20s.**
+* **French Ligue 1 and German 1. Bundesliga show similar trends, with potential ratings peaking around age 23-24.**
+* **Spanish Primera Division players exhibit a consistent increase in overall ratings into their late 20s.**
+* **The graphs highlight differences in player development and peak performance across leagues.**
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -931,6 +999,14 @@ plt.show()
 
 
 ### Comparison of Paris Saint-Germain and Manchester City
+
+* **Key Players**: Notable names include Messi, Neymar Jr, and Mbappé from PSG, and De Bruyne, Sterling, and Ederson from Manchester City.
+* **Rating Highlights**: Both overall and potential ratings are represented, highlighting current performance and future potential.
+* **Team Strengths**: PSG's top players generally have high potential ratings, while Manchester City's players show strong current ratings.
+* **Visual Comparison**: The chart visually emphasizes the strengths and potential growth of players from both clubs.
+
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -968,6 +1044,14 @@ plt.show()
 
 
 ### Random 10 Clubs by Contract Count
+
+* **West Ham United** has the highest number of contracts, totaling 33.
+* **1. FSV Mainz 05** follows closely with 32 contracts.
+* **FC Nantes** ranks third with 31 contracts.
+* The chart provides a visual comparison of the contract counts among ten football clubs.
+* It highlights which clubs have more or fewer contracts, with **West Ham United** and **OGC Nice** having the highest and lowest counts, respectively.
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1006,6 +1090,14 @@ plt.show()
 
 
 ### Average Potential and Overall by Age for Bundesliga, Ligue 1, and EPL
+
+* **Average Ratings:** The graph tracks average player ratings by age for the English Premier League, French Ligue 1, and German 1. Bundesliga.
+* **Rating Trends:** Players in all leagues show an increase in average ratings until their mid-20s.
+* **League Comparison:** The English Premier League has the highest average ratings, peaking around age 27.
+* **Performance Decline:** All leagues experience a decline in average ratings after age 30.
+* **Development:** The graph highlights the development and peak performance periods of players in different leagues.
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1037,6 +1129,15 @@ plt.show()
 
 
 ### Contract Count for Bundesliga, Ligue 1, and EPL
+
+* **Highest Number of Expirations in 2022:** The English Premier League leads with the most contracts expiring, followed by French Ligue 1 and German 1. Bundesliga.
+* **Trend Over the Years:** The number of expiring contracts declines as the years progress towards 2027.
+* **Year-to-Year Comparison:** Each league shows varying counts for contract expirations over the years.
+* **League Distribution:** The chart compares the distribution and timing of contract expirations in three major football leagues.
+* **Notable Decline:** A noticeable decrease in the number of expiring contracts is observed from 2023 onwards.
+
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1105,6 +1206,7 @@ plt.show()
 
 
 ### Team Power for Every Position Class
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1136,7 +1238,50 @@ for index, row in top_players.iterrows():
 
 </details>
 
+### Player Statistics
+
+#### Virgil van Dijk
+| Player             | Position  | Skill      | Value |
+|--------------------|-----------|------------|-------|
+| Virgil van Dijk    | Defender  | defending  | 91.0  |
+| Virgil van Dijk    | Defender  | physic     | 84.0  |
+| Virgil van Dijk    | Defender  | pace       | 78.0  |
+| Virgil van Dijk    | Defender  | dribbling  | 72.0  |
+
+#### Lionel Andrés Messi Cuccittini
+| Player                             | Position  | Skill      | Value |
+|------------------------------------|-----------|------------|-------|
+| Lionel Andrés Messi Cuccittini     | Forward   | dribbling  | 95.0  |
+| Lionel Andrés Messi Cuccittini     | Forward   | shooting   | 92.0  |
+| Lionel Andrés Messi Cuccittini     | Forward   | passing    | 91.0  |
+| Lionel Andrés Messi Cuccittini     | Forward   | pace       | 85.0  |
+
+#### Manuel Peter Neuer
+| Player             | Position      | Skill      | Value |
+|--------------------|---------------|------------|-------|
+| Manuel Peter Neuer | Goal Keeper   | pace       | NaN   |
+| Manuel Peter Neuer | Goal Keeper   | shooting   | NaN   |
+| Manuel Peter Neuer | Goal Keeper   | passing    | NaN   |
+| Manuel Peter Neuer | Goal Keeper   | dribbling  | NaN   |
+
+#### Kevin De Bruyne
+| Player            | Position    | Skill      | Value |
+|-------------------|-------------|------------|-------|
+| Kevin De Bruyne   | Midfielder  | passing    | 93.0  |
+| Kevin De Bruyne   | Midfielder  | dribbling  | 88.0  |
+| Kevin De Bruyne   | Midfielder  | shooting   | 86.0  |
+| Kevin De Bruyne   | Midfielder  | physic     | 78.0  |
+
+
 ### Distribution of the Position Class in every League
+
+* **Defenders and Midfielders dominate** across most leagues, with the highest counts in the **English League Championship** and **English Premier League**.
+* **Forwards and Goal Keepers** have fewer players in comparison, highlighting the specialized nature of these positions.
+* The **German 1. Bundesliga** and **Italian Serie A** show balanced distributions among position classes.
+* **French Ligue 1** and **Spain Primera Division** emphasize their depth in Midfielders and Defenders.
+* The chart effectively illustrates team compositions and player distributions across major European soccer leagues.
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1167,6 +1312,14 @@ plt.show()
 
 
 ### Average Summary Statistics of Players by Position Class in the EPL
+
+* **Defenders and Midfielders:** Excelling in defending and physic, as expected.
+* **Forwards:** Strong in shooting and dribbling, highlighting their offensive skills.
+* **Goal Keepers:** Leading in physic, showcasing their physical strength and agility.
+* **Midfielders:** Stand out in passing and dribbling, reflecting their playmaking abilities.
+* **Overall Comparison:** The chart effectively highlights the strengths and weaknesses of different position classes in the Premier League.
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1203,6 +1356,13 @@ plt.show()
 
 
 ### Highest Paid Player in Each League
+
+* **Highest Paid Player**: Kevin De Bruyne leads with the highest wage in the English Premier League at around 350,000 EUR.
+* **French Ligue 1**: Lionel Messi follows closely as the top earner.
+* **Other Leagues**: Robert Lewandowski (German 1. Bundesliga), Paulo Dybala (Italian Serie A), Pedro Porro (Portuguese Liga ZON SAGRES), Sergi Palencia (Spanish Segunda División), and Miralem Pjanić (Turkish Süper Lig) are highlighted.
+* **Wage Range**: Wages range from approximately 50,000 EUR to 350,000 EUR.
+* **Comparison**: The chart effectively visualizes the wage differences among top players across various football leagues.
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1256,6 +1416,14 @@ plt.show()
 
 
 ### K-Means
+
+* **k = 2 Clusters**: The plot shows a clear distinction between two main clusters, indicating a fundamental grouping of forward players based on their skills.
+* **k = 3 Clusters**: Adding a third cluster reveals more nuanced groupings, capturing additional subgroups within the primary clusters.
+* **k = 4 Clusters**: Four clusters highlight even finer distinctions among players, offering a more detailed segmentation based on skill sets.
+* **k = 5 Clusters**: With five clusters, the plot provides the most detailed segmentation, although some clusters may overlap slightly.
+* **Overall Insight**: These scatter plots effectively visualize how different values of k affect the clustering of forward players' skills, aiding in identifying the optimal number of clusters for detailed analysis.
+
+
 <details>
 <summary>Click to show code</summary>
 
@@ -1307,6 +1475,14 @@ plt.show()
 
 
 ### Top 3 Wonderkids per Age Group
+
+* **Top Potential Ratings**: The chart displays potential ratings of top young football players across different age groups (17, 18, 19, and 20 years old).
+* **Age 17**: M. Cho, Pedri, and J. Bellingham are the top 3 wonderkids with high potential ratings.
+* **Age 18**: F. Wirtz, R. Gravenberch, and M. Greenwood lead this age group in potential.
+* **Age 19**: B. Saka, E. Haaland, and A. Davies have the highest potential ratings.
+* **Age 20**: D. Szoboszlai, followed by other standout young talents, dominates this category.
+
+
 <details>
 <summary>Click to show code</summary>
 
