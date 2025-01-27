@@ -291,6 +291,8 @@ plt.show()
   <img src="https://raw.githubusercontent.com/Tbangh16/FIFA-Analyze/master/photo/Count%20of%20Unique%20Values%20per%20Column%201.png" alt="Unique Values Count" width="600">
 </p>
 
+# Analysis Tasks
+
 
 ## Distribution & The Average Age of The Players in each League
 
